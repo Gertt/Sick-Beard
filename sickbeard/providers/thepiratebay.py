@@ -285,8 +285,8 @@ class ThePirateBayProvider(generic.TorrentProvider):
         
         #Hack for rtorrent user (it will not work for other torrent client)
         if sickbeard.TORRENT_METHOD == "blackhole" and result.url.startswith('magnet'): 
-            magnetFileName = ek.ek(os.path.join, sickbeard.TORRENT_DIR, helpers.sanitizeFileName(result.name) + '.' + self.providerType)
-            magnetFileContent = 'd10:magnet-uri' + `len(result.url)` + ':' + result.url + 'e'
+            magnetFileName = ek.ek(os.path.join, sickbeard.TORRENT_DIR, helpers.sanitizeFileName(result.name) + '.magnet')
+            magnetFileContent = result.url
 
             try:
                 fileOut = open(magnetFileName, 'wb')
